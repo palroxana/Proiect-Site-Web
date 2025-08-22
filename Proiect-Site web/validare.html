@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Validare Formulare</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .input-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .bulina {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    .valid { background-color: green; }
+    .invalid { background-color: red; }
+  </style>
+</head>
+<body>
+
+
+  
+      <header>
+		<h1>Formular sign-up</h1>
+	</header>
+
+	<input type="checkbox" id="toggle-menu" hidden>
+	<label for="toggle-menu" class="menu-icon">&#9776; Meniu</label>
+
+	
+	<nav class="start-menu">
+	<ul>
+		<li><a href="index.html">Acasă</a></li>
+
+		<li class="has-submenu">
+			<input type="checkbox" id="toggle-submenu" hidden>
+			<label for="toggle-submenu" class="submenu-toggle">Produse</label>
+			<ul class="submenu">
+				<li><a href="produse.html">Toate Produsele</a></li>
+				<li><a href="femei.html">Femei</a></li>
+			</ul>
+		</li>
+
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="login.html">Log in</a></li>
+		<li><a href="signup.html">La tine in oras?</a></li>
+		<li><a href="validare.html">Sign up</a></li>
+	</ul>
+	</nav>
+  
+
+  <form id="formValidare">
+    <div class="input-group">
+      <label>Nume si Prenume (litere mici + cifre):</label>
+      <input type="text" id="text1">
+      <span class="bulina" id="bulina-text1"></span>
+    </div>
+	
+	<div class="input-group">
+		<label>Nume utilizator (litere mici + cifre):</label>
+		<input type="text" id="text2">
+		<span class="bulina" id="bulina-text2"></span>
+	</div>
+
+
+    <div class="input-group">
+      <label>Parolă (litere mari, mici, cifre, !):</label>
+      <input type="password" id="parola">
+      <span class="bulina" id="bulina-parola"></span>
+    </div>
+
+    <div class="input-group">
+      <label>Email:</label>
+      <input type="text" id="email">
+      <span class="bulina" id="bulina-email"></span>
+    </div>
+
+    <div class="input-group">
+      <label>Telefon (+40) 777 777 777:</label>
+      <input type="text" id="telefon">
+      <span class="bulina" id="bulina-telefon"></span>
+    </div>
+
+    <div class="input-group">
+      <label>Data:</label>
+      <input type="text" id="data">
+      <select id="format">
+        <option value="zz/ll/aaaa">zz/ll/aaaa</option>
+        <option value="ll/zz/aaaa">ll/zz/aaaa</option>
+        <option value="zz/ll/aa">zz/ll/aa</option>
+      </select>
+      <span class="bulina" id="bulina-data"></span>
+    </div>
+
+    <input type="submit" value="Trimite">
+  </form>
+
+  <script src="validare.js"></script>
+</body>
+</html>

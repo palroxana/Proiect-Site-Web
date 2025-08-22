@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Produse</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+
+	<header>
+		<h1>Lista Produse</h2>
+	</header>
+	
+	<input type="checkbox" id="toggle-menu" hidden>
+	<label for="toggle-menu" class="menu-icon">&#9776; Meniu</label>
+	
+	<nav class="start-menu">
+	<ul>
+		<li><a href="index.html">Acasă</a></li>
+
+		<li class="has-submenu">
+			<input type="checkbox" id="toggle-submenu" hidden>
+			<label for="toggle-submenu" class="submenu-toggle">Produse</label>
+			<ul class="submenu">
+				<li><a href="produse.html">Toate Produsele</a></li>
+				<li><a href="femei.html">Femei</a></li>
+			</ul>
+		</li>
+
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="login.html">Log in</a></li>
+		<li><a href="signup.html">La tine in oras?</a></li>
+		<li><a href="validare.html">Sign up</a></li>
+	</ul>
+	</nav>
+	
+	
+	
+    <section>
+        <h2>Lista Produse</h2>
+
+        <table id="tabelProduse">
+            <tr>
+                <th>Imagine</th>
+                <th>Nume Produs</th>
+                <th>Preț</th>
+            </tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td><img src="imagini/rochie.jpg" alt="Rochie Elegantă de Seară" class="open-popup" data-src="imagini/rochie.jpg" data-type="image" width="100"></td>
+				<td>Rochie Elegantă de Seară</td>
+				<td>249 lei</td>
+			</tr>
+			<tr>
+				<td><img src="imagini/blugi.jpg" alt="Blugi dama" class="open-popup" data-src="imagini/blugi.jpg" data-type="image" width="100"></td>
+				<td>Blugi</td>
+				<td>129 lei</td>
+			</tr>
+			<tr>
+				<td><img src="imagini/geaca.jpg" alt="Geaca" class="open-popup" data-src="imagini/geaca.jpg" data-type="image" width="100"></td>
+				<td>Geacă Pufoasă</td>
+				<td>179 lei</td>
+			</tr>
+			<tr>
+				<td><img src="imagini/pantofi.jpg" alt="Pantofi cu Toc" class="open-popup" data-src="imagini/pantofi.jpg" data-type="image" width="100"></td>
+				<td>Pantofi cu Toc</td>
+				<td>299 lei</td>
+			</tr>
+			<tr>
+				<td><img src="imagini/bluza1.jpg" alt="Pantofi cu Toc" class="open-popup" data-src="imagini/bluza1.jpg" data-type="image" width="100"></td>
+				<td>Bluza neagra</td>
+				<td>299 lei</td>
+			</tr>
+			<tr>
+				<td><img src="imagini/bluza2.jpg" alt="Pantofi cu Toc" class="open-popup" data-src="imagini/bluza2.jpg" data-type="image" width="100"></td>
+				<td>Bluza Alba</td>
+				<td>299 lei</td>
+			</tr>
+        </table>
+    </section>
+
+    
+	
+	<footer>
+		<p>&copy; 2025 Magazin de Haine. Toate drepturile rezervate.</p>
+		<p>Contact: contact@magazinuldehaine.ro | Telefon: 0734-123-456</p>
+	</footer>
+
+</div>
+</body>
+</html>
+

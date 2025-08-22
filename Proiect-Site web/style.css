@@ -1,0 +1,444 @@
+/* Stil pentru header */
+header {
+  background: linear-gradient(to right, #003366, #005599);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid #005599;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+
+/* Hover: animație pe logo */
+header h1:hover {
+  transform: scale(1.1) rotate(-2deg);
+  color: #cce6ff;
+}
+
+
+header p {
+  margin-top: 5px;
+  font-size: 16px;
+  font-style: italic;
+  color: #cce6ff;
+}
+/* Meniu de navigație */
+nav {
+  background-color: #005599;
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style-type: none; /* fără buline */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* aliniere pe mijloc */
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #003366;
+}
+
+/* 100% înălțime și flex vertical */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Footer */
+footer {
+  background-color: #cce6ff;
+  color: #003366;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 40px;
+  border-top: 4px solid #005599;
+  font-size: 14px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+
+/* Conținut principal */
+main, section, article, aside {
+  background-color: #ffffff; /* fundal alb pentru claritate */
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Titluri în conținut */
+main h2, section h2, article h2, aside h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+/* Paragrafe */
+main p, section p, article p, aside p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+
+/* Tabel */
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #cce6ff;
+  color: #003366;
+}
+
+
+figure {
+  text-align: center;
+  margin: 20px 0;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 14px;
+  color: #666;
+}
+
+
+form {
+  margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+input[type="submit"] {
+  background-color: #005599;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #003366;
+}
+
+/* Iconița de meniu */
+.menu-icon {
+  display: inline-block;
+  background-color: #003366;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.menu-icon:hover {
+  background-color: #005599;
+}
+
+/* Meniu vertical ascuns inițial */
+.start-menu {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  width: 220px;
+  max-height: 80vh;            
+  overflow-y: auto;            
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 8px;
+  display: none;
+  z-index: 10;
+}
+
+
+/* Când e bifat checkbox-ul, arată meniul */
+#toggle-menu:checked ~ .start-menu {
+  display: block;
+}
+
+/* Stil linkuri principale */
+.start-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.start-menu li {
+	display:block;
+  position: relative;
+}
+
+.start-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #003366;
+  border-radius: 6px;
+  transition: all 0.5s ease;
+}
+
+/* Hover animat */
+.start-menu a:hover {
+  background-color: #cce6ff;
+  border-left: 4px solid #005599;
+}
+
+/* Submeniu ascuns inițial */
+.submenu {
+  display: none;
+  padding-left: 20px;
+}
+
+/* Afișare submeniu la click pe etichetă */
+.has-submenu input[type="checkbox"]:checked ~ .submenu {
+  display: block;
+  animation: slide-down 0.3s ease-in-out;
+}
+
+/* Eticheta (label-ul) care acționează ca buton de deschidere */
+.submenu-toggle {
+  display: block;
+  padding: 10px;
+  color: #003366;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submenu-toggle:hover {
+  background-color: #cce6ff;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ascunde submeniul implicit */
+.start-menu .submenu {
+  display: none !important;
+}
+
+/* Arată submeniul când checkbox-ul este bifat */
+.has-submenu input[type="checkbox"]:checked ~ .submenu {
+  display: block !important;
+  animation: slide-down 0.3s ease-in-out;
+}
+
+.slider {
+  width: 40%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.big-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  margin-bottom: 8px;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.thumbnails img {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: border 0.3s;
+  border-radius: 4px;
+}
+
+.thumbnails img:hover {
+  border: 1px solid #005599;
+}
+
+
+
+#lista-feedback li {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  margin-bottom: 10px;
+}
+
+#lista-feedback li.vizibil {
+  display: block;
+  opacity: 1;
+}
+
+
+
+.jquery-slider {
+    position: relative;
+    width: 300px;
+    height: auto;
+	max-height:1200px;
+    overflow: hidden;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    position: relative;
+}
+
+.slider-content {
+    position: relative;
+}
+
+.slide-item {
+    width: 100%;
+	max-height: 400px;
+	object-fit: cover;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.arrow {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    cursor: pointer;
+    background: rgba(255,255,255,0.7);
+    padding: 5px;
+}
+
+.arrow.up {
+    top: 10px;
+}
+
+.arrow.down {
+    bottom: 10px;
+}
+
+
+#popup-body img {
+    max-width: 100%;
+    max-height: 80vh;
+    height: auto;
+    width: auto;
+    display: block;
+    margin: auto;
+}
+
+
+#popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+#popup-content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#searchResults {
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 300px;
+    background: white;
+    position: absolute;
+    z-index: 1000;
+}
+
+#searchResults div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#searchResults div:hover {
+    background-color: #f0f0f0;
+}
+
+
+

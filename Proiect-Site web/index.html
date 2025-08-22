@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Magazin de Haine</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+
+<body>
+<div class="wrapper">
+
+	<header>
+		<h1>Magazin de Haine</h1>
+		<p>Alege dintre cele mai noi colecții de haine pentru bărbați, femei și copii.</p>
+	</header>
+	
+	
+	
+	<input type="checkbox" id="toggle-menu" hidden>
+	<label for="toggle-menu" class="menu-icon">&#9776; Meniu</label>
+
+	<nav class="start-menu">
+	<ul>
+		<li><a href="index.html">Acasă</a></li>
+
+		<li class="has-submenu">
+			<input type="checkbox" id="toggle-submenu" hidden>
+			<label for="toggle-submenu" class="submenu-toggle">Produse</label>
+			<ul class="submenu">
+				<li><a href="produse.html">Toate Produsele</a></li>
+				<li><a href="femei.html">Femei</a></li>
+			</ul>
+		</li>
+
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="login.html">Log in</a></li>
+		<li><a href="signup.html">La tine in oras?</a></li>
+		<li><a href="validare.html">Sign up</a></li>
+	</ul>
+	</nav>
+	
+	<div class="slider">
+		<div class="big-image">
+			<img src="imagini/geaca.jpg" alt="Imagine mare" id="main-image">
+		</div>
+
+		<div class="thumbnails">
+			<img src="imagini/blugi.jpg" alt="blugi" class="thumb" data-big="imagini/blugi.jpg">
+			<img src="imagini/geaca.jpg" alt="geaca" class="thumb" data-big="imagini/geaca.jpg">
+			<img src="imagini/pantofi.jpg" alt="pantofi" class="thumb" data-big="imagini/pantofi.jpg">
+		</div>
+	</div>
+
+	
+	<section>
+    <h2>Informații despre magazin</h2>
+	</section>
+	
+	<aside>
+		<h3>Oferte Speciale</h3>
+		<p>Reduceri de până la <strong>50%</strong> la colecția de vară!</p>
+	</aside>
+	
+
+
+
+
+	<table id="tabelProduse" class="sortabil">
+		<thead>
+			<tr>
+			<th>Secțiune</th>
+			<th>Detalii</th>
+			<th>Oferte Speciale</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+			<td>Totul noi</td>
+			<td>Suntem un magazin de haine de calitate, cu oferte excelente!</td>
+			<td>Oferte acum!</td>
+			</tr>
+		<tr>
+			<td>Despre noi</td>
+			<td>Ne găsești online și în magazinele fizice din toată țara.</td>
+			<td>Reduceri de până la 50% la colecția de vară!</td>
+		</tr>
+		</tbody>
+	</table>
+	
+	
+	<div class="jquery-slider-wrapper">
+    <h2>Slider din laborator</h2>
+
+    <label for="numSlides">Număr de imagini afișate:</label>
+    <input type="number" id="numSlides" value="1" min="1" max="5">
+    
+    <label for="interval">Interval schimbare (secunde):</label>
+    <input type="number" id="interval" value="3" min="1" max="10">
+
+    <div class="jquery-slider">
+        <div class="slider-content">
+            <img src="imagini/blugi.jpg" class="slide-item" alt="img1">
+            <img src="imagini/geaca.jpg" class="slide-item" alt="img2">
+            <img src="imagini/pantofi.jpg" class="slide-item" alt="img3">
+            <img src="imagini/rochie.jpg" class="slide-item" alt="img4">
+        </div>
+        
+        <div class="arrow up">⬆️</div>
+        <div class="arrow down">⬇️</div>
+		</div>
+	</div>
+
+
+
+<script>
+	const thumbnails = document.querySelectorAll('.thumb');
+	const mainImage = document.getElementById('main-image');
+
+	thumbnails.forEach(thumb => {
+		thumb.addEventListener('mouseover', function() {
+		const newSrc = this.getAttribute('data-big');
+		mainImage.setAttribute('src', newSrc);
+		});
+	});
+	
+  window.addEventListener("DOMContentLoaded", function () {
+    const tabele = document.querySelectorAll("table.sortabil");
+
+    tabele.forEach(tabel => {
+      const ths = tabel.querySelectorAll("thead th");
+
+      ths.forEach((th, index) => {
+        let asc = true;
+
+        th.addEventListener("click", function () {
+          const tbody = tabel.querySelector("tbody");
+          const rows = Array.from(tbody.querySelectorAll("tr"));
+
+          rows.sort((a, b) => {
+            const aText = a.children[index]?.innerText.trim() || "";
+            const bText = b.children[index]?.innerText.trim() || "";
+
+            const aVal = isNaN(aText) ? aText.toLowerCase() : parseFloat(aText);
+            const bVal = isNaN(bText) ? bText.toLowerCase() : parseFloat(bText);
+
+            if (aVal < bVal) return asc ? -1 : 1;
+            if (aVal > bVal) return asc ? 1 : -1;
+            return 0;
+          });
+
+          tbody.innerHTML = "";
+          rows.forEach(row => tbody.appendChild(row));
+          asc = !asc;
+        });
+      });
+    });
+  });
+  
+
+
+
+</script>
+	
+	
+<script>
+$(document).ready(function() {
+    let intervalId;
+    let currentIndex = 0;
+
+    function updateSlider() {
+        let numSlides = parseInt($('#numSlides').val()) || 1;
+        let allItems = $('.slide-item');
+        let totalItems = allItems.length;
+
+        allItems.hide();
+        for (let i = 0; i < numSlides; i++) {
+            let index = (currentIndex + i) % totalItems;
+            $(allItems[index]).fadeIn(400);
+        }
+    }
+
+    function moveNext() {
+        let numSlides = parseInt($('#numSlides').val()) || 1;
+        let allItems = $('.slide-item');
+        let totalItems = allItems.length;
+
+        currentIndex = (currentIndex + numSlides) % totalItems;
+        updateSlider();
+    }
+
+    function movePrev() {
+        let numSlides = parseInt($('#numSlides').val()) || 1;
+        let allItems = $('.slide-item');
+        let totalItems = allItems.length;
+
+        currentIndex = (currentIndex - numSlides + totalItems) % totalItems;
+        updateSlider();
+    }
+
+    function startSlider() {
+        clearInterval(intervalId);
+        let sec = (parseInt($('#interval').val()) || 3) * 1000;
+
+        intervalId = setInterval(function() {
+            moveNext();
+        }, sec);
+    }
+
+    $('.arrow.up').click(function() {
+        movePrev();
+    });
+
+    $('.arrow.down').click(function() {
+        moveNext();
+    });
+
+    $('.jquery-slider').hover(
+        function() {
+            $('.arrow').fadeIn();
+        },
+        function() {
+            $('.arrow').fadeOut();
+        }
+    );
+
+    $('#numSlides, #interval').change(function() {
+        updateSlider();
+        startSlider();
+    });
+
+    updateSlider();
+    startSlider();
+});
+</script>
+
+
+
+</body>
+</html>

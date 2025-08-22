@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Înregistrare - Magazin de Haine</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="wrapper">
+
+	<header>
+		<h1>Suntem la tine in oras?</h1>
+	</header>
+	
+	<input type="checkbox" id="toggle-menu" hidden>
+	<label for="toggle-menu" class="menu-icon">&#9776; Meniu</label>
+	
+	<nav class="start-menu">
+	<ul>
+		<li><a href="index.html">Acasă</a></li>
+
+		<li class="has-submenu">
+			<input type="checkbox" id="toggle-submenu" hidden>
+			<label for="toggle-submenu" class="submenu-toggle">Produse</label>
+			<ul class="submenu">
+				<li><a href="produse.html">Toate Produsele</a></li>
+				<li><a href="femei.html">Femei</a></li>
+			</ul>
+		</li>
+
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="login.html">Log in</a></li>
+		<li><a href="signup.html">La tine in oras?</a></li>
+		<li><a href="validare.html">Sign up</a></li>
+	</ul>
+	</nav>
+
+
+
+
+    <h2>Haide si in magazin</h2>
+
+    <form onsubmit="inregistreazaUtilizator(event)">
+        
+		
+		<div class="input-group">
+			<label for="judet">Județ:</label>
+			<select id="judet">
+				<option value="">Alege un județ</option>
+			</select>
+		</div>
+
+		<div class="input-group">
+			<label for="oras">Oraș:</label>
+			<select id="oras">
+				<option value="">Alege un oraș</option>
+			</select>
+		</div>
+
+		<button type="button" onclick="verificaDisponibilitate()">Afișează</button>
+			<p id="rezultat"></p> 
+
+
+    </form>
+
+
+    <script>
+
+	const dateLocalizare = {
+		"Bacău": ["Bacău", "Onești", "Moinești"],
+		"Cluj": ["Cluj-Napoca", "Turda", "Dej"],
+		"Timiș": ["Timișoara", "Lugoj", "Sânnicolau Mare"],
+		"Iași": ["Iași", "Pașcani", "Târgu Frumos"]
+	};
+
+
+	const magazine = {
+		"Bacău": ["Bacău"],
+		"Cluj": ["Cluj-Napoca", "Turda"],
+		"Timiș": ["Timișoara"],
+		"Iași": [] 
+	};
+
+
+		function verificaDisponibilitate() {
+			const judet = document.getElementById("judet").value;
+			const oras = document.getElementById("oras").value;
+			const rezultat = document.getElementById("rezultat");
+		
+		
+		if (!judet || !oras) {
+			rezultat.textContent = "⚠️ Te rog să selectezi un județ și un oraș.";
+			rezultat.style.color = "orange";
+			return;
+		}
+		
+		  const oraseCuMagazine = magazine[judet] || [];
+
+		if (oraseCuMagazine.includes(oras)) {
+			rezultat.textContent = `✅ Avem magazine în ${oras}.`;
+			rezultat.style.color = "green";
+		} else {
+			rezultat.textContent = `❌ Momentan nu avem magazine în ${oras}.`;
+			rezultat.style.color = "red";
+		}
+		}
+
+		window.addEventListener("DOMContentLoaded", function () {
+			const judetSelect = document.getElementById("judet");
+			const orasSelect = document.getElementById("oras");
+
+		for (let judet in dateLocalizare) {
+			let opt = document.createElement("option");
+			opt.value = judet;//opt="<option value='cluj'>cluj</option>"
+			opt.textContent = judet;
+			judetSelect.appendChild(opt);
+		}
+
+			judetSelect.addEventListener("change", function () {
+				const orasCurent = dateLocalizare[judetSelect.value] || [];
+				orasSelect.innerHTML = "<option value=''>Alege un oraș</option>";
+
+				orasCurent.forEach(oras => {
+					let opt = document.createElement("option");
+					opt.value = oras;
+					opt.textContent = oras;
+					orasSelect.appendChild(opt);
+				});
+			});
+		});
+
+		
+
+
+    </script>
+	
+	
+	<footer>
+		<p>&copy; 2025 Magazin de Haine. Toate drepturile rezervate.</p>
+		<p>Contact: contact@magazinuldehaine.ro | Telefon: 0734-123-456</p>
+	</footer>
+</div>
+</body>
+</html>

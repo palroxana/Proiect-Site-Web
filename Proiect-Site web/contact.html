@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Magazin de Haine</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<div class="wrapper">
+
+    <header>
+		<h1>Contact - Magazin de Haine</h1>
+	</header>
+
+	<input type="checkbox" id="toggle-menu" hidden>
+	<label for="toggle-menu" class="menu-icon">&#9776; Meniu</label>
+
+	
+	<nav class="start-menu">
+	<ul>
+		<li><a href="index.html">Acasă</a></li>
+
+		<li class="has-submenu">
+			<input type="checkbox" id="toggle-submenu" hidden>
+			<label for="toggle-submenu" class="submenu-toggle">Produse</label>
+			<ul class="submenu">
+				<li><a href="produse.html">Toate Produsele</a></li>
+				<li><a href="femei.html">Femei</a></li>
+			</ul>
+		</li>
+
+		<li><a href="contact.html">Contact</a></li>
+		<li><a href="login.html">Log in</a></li>
+		<li><a href="signup.html">La tine in oras?</a></li>
+		<li><a href="validare.html">Sign up</a></li>
+	</ul>
+	</nav>
+
+
+    <h2>Formular de contact</h2>
+
+    <form action="submit_form.html" method="post">
+        <label for="nume">Nume:</label>
+        <input type="text" id="nume" name="nume"><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="mesaj">Mesaj:</label><br>
+        <textarea id="mesaj" name="mesaj" rows="5" cols="30"></textarea><br><br>
+
+        <input type="submit" value="Trimite">
+    </form>
+	
+	<h2>Ce spun clienții noștri</h2>
+
+	<ul id="lista-feedback">
+		<li>
+			<div>„Haine excelente, livrare rapidă!”</div>
+			<a href="index.html">Read more</a>
+		</li>
+		<li>
+			<div>„Calitate peste așteptări. Recomand cu drag.”</div>
+			<a href="index.html">Read more</a>
+		</li>
+		<li>
+			<div>„Serviciu clienți foarte amabil.”</div>
+			<a href="index.html">Read more</a>
+		</li>
+		<li>
+			<div>„Am găsit exact ce căutam, la preț bun.”</div>
+			<a href="index.html">Read more</a>
+		</li>
+	</ul>
+
+	<div style="margin-top: 10px;">
+		<button onclick="prevFeedback()">⬅ Previous</button>
+		<button onclick="nextFeedback()">Next ➡</button>
+	</div>
+
+	
+	
+	<footer>
+		<p>&copy; 2025 Magazin de Haine. Toate drepturile rezervate.</p>
+		<p>Contact: contact@magazinuldehaine.ro | Telefon: 0734-123-456</p>
+	</footer>
+
+</div>
+
+<script>
+  const feedbackuri = document.querySelectorAll("#lista-feedback li");
+  let indexFeedback = 0;
+  let intervalId = null;
+  const TIMP_SEC = 5;
+
+  function afiseazaFeedback(index) {
+    feedbackuri.forEach((el, i) => {
+      el.classList.remove("vizibil");
+    });
+    feedbackuri[index].classList.add("vizibil");
+  }
+
+  function nextFeedback() {
+    indexFeedback = (indexFeedback + 1) % feedbackuri.length;
+    afiseazaFeedback(indexFeedback);
+    resetTimer();
+  }
+
+  function prevFeedback() {
+    indexFeedback = (indexFeedback - 1 + feedbackuri.length) % feedbackuri.length;
+    afiseazaFeedback(indexFeedback);
+    resetTimer();
+  }
+
+  function autoScroll() {
+    intervalId = setInterval(() => {
+      nextFeedback();
+    }, TIMP_SEC * 1000);
+  }
+
+  function resetTimer() {
+    clearInterval(intervalId);
+    autoScroll();
+  }
+
+  window.addEventListener("DOMContentLoaded", function () {
+    afiseazaFeedback(indexFeedback);
+    autoScroll();
+  });
+</script>
+
+
+</body>
+</html>
